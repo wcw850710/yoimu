@@ -1,0 +1,12 @@
+{
+  "name": "@yoimu/create-app",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "wcw850710",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}

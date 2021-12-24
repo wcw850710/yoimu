@@ -1,0 +1,19 @@
+{
+  "name": "@yoimu/react-common-lib",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "typings": "type.d.ts",
+  "keywords": [],
+  "author": "wcw850710",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@yoimu/common-lib": "workspace:^0.0.2",
+    "mitt": "^3.0.0",
+    "react": "^17.0.2",
+    "use-context-selector": "^1.3.9"
+  }
+}
