@@ -1,17 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
+import { useSafeCallback } from './use-safe-callback'
 
-export const useSafeState = initialState => {
-	const _isMounted = useRef(true)
-	const [state, setState] = useState(initialState)
-	const updateState = useCallback(update => {
-		if (_isMounted.current) {
-			setState(update)
-		}
-	}, [])
-	useEffect(() => {
-		return () => {
-			_isMounted.current = false
-		}
-	}, [])
+export const useSafeState = initialValue => {
+	const [state, setState] = useState(initialValue)
+	const updateState = useSafeCallback(setState)
+
 	return [state, updateState]
 }

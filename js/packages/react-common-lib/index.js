@@ -12,6 +12,8 @@ import { useInitialRef } from './src/use-initial-ref'
 import { useToggle } from './src/use-toggle'
 import { useEditorList } from './src/use-editor-list'
 import { useCheckInjectReturn } from './src/use-check-inject-return'
+import { useSafeCallback } from './src/use-safe-callback'
+import { useSafeImmer } from './src/use-safe-immer'
 
 export {
 	createI18n,
@@ -22,7 +24,9 @@ export {
 	useDebounce,
 	useDebounceFunc,
 	useMethods,
+	useSafeCallback,
 	useSafeState,
+	useSafeImmer,
 	useInitialRef,
 	useToggle,
 	useEditorList,

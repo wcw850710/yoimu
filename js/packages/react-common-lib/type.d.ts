@@ -1,4 +1,5 @@
 import { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react'
+import { ImmerHook } from 'use-immer'
 
 type Prev = [never, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ...0[]]
 
@@ -88,9 +89,13 @@ export function useMethods<
 	U extends { [funName: string]: (state: T, ...args: any) => T },
 >(initialValue: T, methods: U): { [key in keyof T]: (...args: any) => T }
 
-export function useSafeState<T>(
-	initialState: T | (() => T),
-): [T, Dispatch<SetStateAction<T>>]
+export function useSafeState<S = any>(
+	initialValue: S | (() => S),
+): [S, Dispatch<SetStateAction<S>>]
+
+export function useSafeImmer<S = any>(initialValue: S | (() => S)): ImmerHook<S>
+
+export function useSafeCallback<F extends Function>(updater: F): F
 
 export function useInitialRef<T>(
 	initialValue: T | (() => T),
