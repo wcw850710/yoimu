@@ -1,16 +1,17 @@
 import { DatePicker } from 'antd'
-import { mtime } from '@yoimu/common-lib'
-import { createClassName } from '@yoimu/web-lib'
+import { mergeWords, mtime } from '@yoimu/common-lib'
 import { useCommonSelectState } from '@/hooks/use-common-select-state'
+import { useMemo } from 'react'
 
 const { RangePicker } = DatePicker
 export const PresetRangePicker = ({
-	className,
+	className: pclassName,
 	defaultValue,
 	value,
 	onChange,
 	...args
 }) => {
+	const className = useMemo(() => pclassName || undefined, [pclassName])
 	const [v, _onChange] = useCommonSelectState({
 		value,
 		onChange,
@@ -25,9 +26,7 @@ export const PresetRangePicker = ({
 
 	return (
 		<RangePicker
-			className={createClassName({
-				[className]: className != null,
-			})}
+			className={className}
 			ranges={ranges}
 			value={v}
 			onChange={_onChange}

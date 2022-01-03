@@ -1,7 +1,5 @@
 module.exports = {
-	purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-	darkMode: false, // or 'media' or 'class'
-	important: true,
+	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		screens: {
 			'2xl': { max: '1535px' },
@@ -47,5 +45,5 @@ module.exports = {
 	variants: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [require('@tailwindcss/line-clamp')],
 }

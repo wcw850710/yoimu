@@ -19,7 +19,7 @@ function AuthHttpProvider({ children }) {
 		_service.http.interceptors.request.use(
 			config => {
 				if (token != null) {
-					config.headers['X-XSRF-TOKEN'] = token
+					config.headers['Authorization'] = `Bearer ${token}`
 				}
 				return config
 			},

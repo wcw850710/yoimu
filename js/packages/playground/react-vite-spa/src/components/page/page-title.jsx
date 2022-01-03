@@ -1,7 +1,8 @@
 import { Link, useHistory } from 'react-router-dom'
 import { Breadcrumb, Typography } from 'antd'
 import { ArrowLeftOutlined, HomeOutlined } from '@ant-design/icons'
-import { createClassName } from '@yoimu/web-lib'
+import { useMemo } from 'react'
+import { mergeWords } from '@yoimu/common-lib'
 
 const { Item } = Breadcrumb
 export const PageTitle = ({
@@ -9,9 +10,13 @@ export const PageTitle = ({
 	just = false,
 	back = false,
 	icon: Icon,
-	className,
+	className: pclassName,
 	children,
 }) => {
+	const className = useMemo(
+		() => mergeWords('flex-1 bg-gray-100 px-2 ml-2', pclassName && pclassName),
+		[pclassName],
+	)
 	const history = useHistory()
 	const _onGoBack = () => history.goBack()
 
@@ -27,12 +32,7 @@ export const PageTitle = ({
 				<Typography.Title level={3} style={{ marginBottom: 0 }}>
 					{title}
 				</Typography.Title>
-				<Breadcrumb
-					className={createClassName({
-						'flex-1 bg-gray-100 px-2 ml-2': true,
-						[className]: className != null,
-					})}
-				>
+				<Breadcrumb className={className}>
 					<Item>
 						<Link to={'/'}>
 							<HomeOutlined

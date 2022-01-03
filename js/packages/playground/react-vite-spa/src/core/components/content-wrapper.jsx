@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
-import { createClassName } from '@yoimu/web-lib'
+import { mergeWords } from '@yoimu/common-lib'
 
 export const ContentWrapper = ({ className: pclassName, children }) => {
 	const className = useMemo(
 		() =>
-			createClassName({
-				'p-4 bg-white shadow-md rounded-md m-4': true,
-				[pclassName]: pclassName != null,
-			}),
+			mergeWords(
+				'p-4 bg-white shadow-md rounded-md m-4',
+				pclassName && pclassName,
+			),
 		[pclassName],
 	)
 

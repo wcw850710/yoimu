@@ -25,34 +25,34 @@ export const useValidateAuth = () => {
 					setAuth(undefined)
 					return {
 						code: EAuthCode.authSuccess,
-						message: EAuthCode.t(EAuthCode.authSuccess),
+						message: EAuthCode.t[EAuthCode.authSuccess],
 					}
 				}
 			} else {
 				return {
 					code: EAuthCode.hasAuth,
-					message: EAuthCode.t(EAuthCode.hasAuth),
+					message: EAuthCode.t[EAuthCode.hasAuth],
 				}
 			}
 			return {
 				code: EAuthCode.authError,
-				message: EAuthCode.t(EAuthCode.authError),
+				message: EAuthCode.t[EAuthCode.authError],
 			}
 		}
 		return {
 			code: EAuthCode.notLogin,
-			message: EAuthCode.t(EAuthCode.notLogin),
+			message: EAuthCode.t[EAuthCode.notLogin],
 		}
 		// 基礎身分權限用
 		// if (checkPermission(permissionLevel)) {
 		// 	return {
 		// 		code: EAuthCode.hasAuth,
-		// 		message: EAuthCode.t(EAuthCode.hasAuth),
+		// 		message: EAuthCode.t[EAuthCode.hasAuth],
 		// 	}
 		// } else {
 		// 	return {
 		// 		code: EAuthCode.noRolePermission,
-		// 		message: EAuthCode.t(EAuthCode.noRolePermission),
+		// 		message: EAuthCode.t[EAuthCode.noRolePermission],
 		// 	}
 		// }
 	}, [auth, token /*, checkPermission基礎身分權限用*/])
@@ -60,7 +60,7 @@ export const useValidateAuth = () => {
 	const initAuth = async () => {
 		const { code: _code } = await checkAuth()
 		$devLog({
-			'checkAuth.code': EAuthCode.t(_code),
+			'checkAuth.code': EAuthCode.t[_code],
 		})
 		switch (_code) {
 			case EAuthCode.authError:
