@@ -42,7 +42,7 @@ export default ({ mode }) => {
 					javascriptEnabled: true,
 				},
 				scss: {
-					additionalData: `@import "./src/core/style/_variables";`,
+					additionalData: `@import "./src/core/style/variables";`,
 				},
 			},
 		},
