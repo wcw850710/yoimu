@@ -17,6 +17,7 @@ module.exports = {
 				success: '#52c41a',
 				'light-success': '#52c41a1a',
 				primary: '#1890ff',
+				'hover-primary': '#40a9ff',
 				'light-primary': '#1890ff1a',
 				warning: '#faad14',
 				'light-warning': '#faad141a',

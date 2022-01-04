@@ -3,7 +3,7 @@
   cursor: pointer;
   transition: color 0.3s;
   &:hover {
-    @apply text-primary;
+    @apply text-hover-primary;
   }
 }
 
