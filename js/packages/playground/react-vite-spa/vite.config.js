@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import { minifyHtml, injectHtml } from 'vite-plugin-html'
 import react from '@vitejs/plugin-react'
-import vitePluginImport from 'vite-plugin-babel-import'
+import styleImport, { AntdResolve } from 'vite-plugin-style-import'
 import reactSvgPlugin from 'vite-plugin-react-svg'
 const path = require('path')
 
@@ -16,22 +16,19 @@ export default ({ mode }) => {
 				defaultExport: 'component',
 				expandProps: 'end',
 			}),
-			vitePluginImport([
-				{
-					libraryName: 'antd',
-					libraryDirectory: 'es',
-					style(name) {
-						return `antd/es/${name}/style`
-					},
-				},
-				// {
-				// 	libraryName: 'antd-mobile',
-				// 	libraryDirectory: 'es',
-				// 	style(name) {
-				// 		return `antd-mobile/es/${name}/style`
+			styleImport({
+				resolves: [AntdResolve()],
+				// antd-mobile 樣式按需引入(未測過)
+				// libs: [
+				// 	{
+				// 		libraryName: 'antd-mobile',
+				// 		esModule: true,
+				// 		resolveStyle: (name) => {
+				// 			return `antd-mobile/es/${name}/style`
+				// 		},
 				// 	},
-				// },
-			]),
+				// ],
+			}),
 			minifyHtml(),
 			injectHtml({
 				data: {
@@ -43,6 +40,9 @@ export default ({ mode }) => {
 			preprocessorOptions: {
 				less: {
 					javascriptEnabled: true,
+				},
+				scss: {
+					additionalData: `@import "./src/core/style/_variables";`,
 				},
 			},
 		},
