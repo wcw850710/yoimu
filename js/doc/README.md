@@ -3,17 +3,17 @@
 ## Using `create-docz-app`
 
 ```sh
-npx create-docz-app docz-app-basic
+npx create-doc-app doc-app-basic
 # or
-yarn create docz-app docz-app-basic
+yarn create doc-app doc-app-basic
 ```
 
 ## Download manually
 
 ```sh
-curl https://codeload.github.com/doczjs/docz/tar.gz/master | tar -xz --strip=2 docz-master/examples/basic
-mv basic docz-basic-example
-cd docz-basic-example
+curl https://codeload.github.com/doczjs/docz/tar.gz/master | tar -xz --strip=2 doc-master/examples/basic
+mv basic doc-basic-example
+cd doc-basic-example
 ```
 
 ## Setup
