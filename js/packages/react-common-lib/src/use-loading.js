@@ -34,20 +34,17 @@ export const useLoading = props => {
 		const res = {}
 
 		for (let i = 0; i < num; i++) {
-			const [name, bigName] =
-				i === 0
-					? ['loading', 'Loading']
-					: [`loading${i + 1}`, `Loading${i + 1}`]
+			const suffix = i === 0 ? '' : i + 1
 
-			res[name] = false
-			res[`use${bigName}Call`] = callback =>
+			res['loading' + suffix] = false
+			res['useLoadingCall' + suffix] = callback =>
 				callFunc(callback, loadingCall, res, name, forceUpdate)
-			res[`use${bigName}Callback`] = (callback, deps = []) =>
+			res['useLoadingCallback' + suffix] = (callback, deps = []) =>
 				useCallback(
 					callFunc(callback, loadingCall, res, name, forceUpdate),
 					[callFunc].concat(deps),
 				)
-			res[`use${bigName}Effect`] = (callback, deps = []) =>
+			res['useLoadingEffect' + suffix] = (callback, deps = []) =>
 				useEffect(callFunc(callback, loadingCall, res, name, forceUpdate), deps)
 		}
 
