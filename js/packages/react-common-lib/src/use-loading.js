@@ -42,7 +42,7 @@ export const useLoading = props => {
 				callFunc(callback, loadingCall, res, propName, forceUpdate)
 			res['useLoadingCallback' + suffix] = (callback, deps = []) =>
 				useCallback(
-					() => callFunc(callback, loadingCall, res, propName, forceUpdate),
+					callFunc(callback, loadingCall, res, propName, forceUpdate),
 					[callFunc].concat(deps),
 				)
 			res['useLoadingEffect' + suffix] = (callback, deps = []) =>

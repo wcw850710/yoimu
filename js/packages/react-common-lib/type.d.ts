@@ -152,7 +152,7 @@ type LoadingCall = <T>(
 	callback: (...args: any[]) => any,
 ) => LoadingCallFuncReturn<T>
 
-type LoadingCallBack = <T>(
+type LoadingCallback = <T>(
 	callback: (...args: any[]) => any,
 	deps?: DependencyList,
 ) => LoadingCallFuncReturn<T>
@@ -168,52 +168,75 @@ export function useLoading<N = 1>(
 	? {
 			loading: boolean
 			useLoadingCall: LoadingCall
-			useLoadingCallBack: LoadingCallBack
+			useLoadingCallback: LoadingCallback
 			useLoadingEffect: LoadingEffect
 	  }
 	: N extends 2
 	? {
 			loading: boolean
 			useLoadingCall: LoadingCall
-			useLoadingCallBack: LoadingCallBack
+			useLoadingCallback: LoadingCallback
 			useLoadingEffect: LoadingEffect
 			loading2: boolean
 			useLoadingCall2: LoadingCall
-			useLoadingCallBack2: LoadingCallBack
+			useLoadingCallback2: LoadingCallback
 			useLoadingEffect2: LoadingEffect
 	  }
 	: N extends 3
 	? {
 			loading: boolean
 			useLoadingCall: LoadingCall
-			useLoadingCallBack: LoadingCallBack
+			useLoadingCallback: LoadingCallback
 			useLoadingEffect: LoadingEffect
 			loading2: boolean
 			useLoadingCall2: LoadingCall
-			useLoadingCallBack2: LoadingCallBack
+			useLoadingCallback2: LoadingCallback
 			useLoadingEffect2: LoadingEffect
 			loading3: boolean
 			useLoadingCall3: LoadingCall
-			useLoadingCallBack3: LoadingCallBack
+			useLoadingCallback3: LoadingCallback
 			useLoadingEffect3: LoadingEffect
 	  }
 	: N extends 4
 	? {
 			loading: boolean
 			useLoadingCall: LoadingCall
-			useLoadingCallBack: LoadingCallBack
+			useLoadingCallback: LoadingCallback
 			useLoadingEffect: LoadingEffect
 			loading2: boolean
 			useLoadingCall2: LoadingCall
-			useLoadingCallBack2: LoadingCallBack
+			useLoadingCallback2: LoadingCallback
 			useLoadingEffect2: LoadingEffect
 			loading3: boolean
 			useLoadingCall3: LoadingCall
-			useLoadingCallBack3: LoadingCallBack
+			useLoadingCallback3: LoadingCallback
 			useLoadingEffect3: LoadingEffect
 			loading4: boolean
 			useLoadingCall4: LoadingCall
-			useLoadingCallBack4: LoadingCallBack
+			useLoadingCallback4: LoadingCallback
 			useLoadingEffect4: LoadingEffect
+	  }
+	: N extends 5
+	? {
+			loading: boolean
+			useLoadingCall: LoadingCall
+			useLoadingCallback: LoadingCallback
+			useLoadingEffect: LoadingEffect
+			loading2: boolean
+			useLoadingCall2: LoadingCall
+			useLoadingCallback2: LoadingCallback
+			useLoadingEffect2: LoadingEffect
+			loading3: boolean
+			useLoadingCall3: LoadingCall
+			useLoadingCallback3: LoadingCallback
+			useLoadingEffect3: LoadingEffect
+			loading4: boolean
+			useLoadingCall4: LoadingCall
+			useLoadingCallback4: LoadingCallback
+			useLoadingEffect4: LoadingEffect
+			loading5: boolean
+			useLoadingCall5: LoadingCall
+			useLoadingCallback5: LoadingCallback
+			useLoadingEffect5: LoadingEffect
 	  }
 	: never
