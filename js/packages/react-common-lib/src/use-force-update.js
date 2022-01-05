@@ -1,6 +1,7 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
+import { useSafeState } from './use-safe-state'
 
 export const useForceUpdate = () => {
-	const [, setCount] = useState(0)
+	const [, setCount] = useSafeState(0)
 	return useCallback(() => setCount(e => e + 1), [])
 }
