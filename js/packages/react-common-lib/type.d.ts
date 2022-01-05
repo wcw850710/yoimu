@@ -1,4 +1,11 @@
-import { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react'
+import {
+	DependencyList,
+	Dispatch,
+	EffectCallback,
+	MutableRefObject,
+	ReactElement,
+	SetStateAction,
+} from 'react'
 import { ImmerHook } from 'use-immer'
 
 type Prev = [never, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ...0[]]
@@ -131,3 +138,82 @@ export function useCheckInjectReturn<T extends object, K extends keyof T>(
 		}
 	},
 ]
+
+export function useForceUpdate(): () => void
+
+type LoadingProps<N> = { num?: N; loadingCall?: boolean }
+
+type LoadingCallFuncReturn<T> = () => Promise<{
+	success: boolean
+	data: T | Error
+}>
+
+type LoadingCall = <T>(
+	callback: (...args: any[]) => any,
+) => LoadingCallFuncReturn<T>
+
+type LoadingCallBack = <T>(
+	callback: (...args: any[]) => any,
+	deps?: DependencyList,
+) => LoadingCallFuncReturn<T>
+
+type LoadingEffect = <T = any>(
+	callback: EffectCallback,
+	deps?: DependencyList,
+) => void
+
+export function useLoading<N = 1>(
+	props?: LoadingProps<N>,
+): N extends 1
+	? {
+			loading: boolean
+			useLoadingCall: LoadingCall
+			useLoadingCallBack: LoadingCallBack
+			useLoadingEffect: LoadingEffect
+	  }
+	: N extends 2
+	? {
+			loading: boolean
+			useLoadingCall: LoadingCall
+			useLoadingCallBack: LoadingCallBack
+			useLoadingEffect: LoadingEffect
+			loading2: boolean
+			useLoadingCall2: LoadingCall
+			useLoadingCallBack2: LoadingCallBack
+			useLoadingEffect2: LoadingEffect
+	  }
+	: N extends 3
+	? {
+			loading: boolean
+			useLoadingCall: LoadingCall
+			useLoadingCallBack: LoadingCallBack
+			useLoadingEffect: LoadingEffect
+			loading2: boolean
+			useLoadingCall2: LoadingCall
+			useLoadingCallBack2: LoadingCallBack
+			useLoadingEffect2: LoadingEffect
+			loading3: boolean
+			useLoadingCall3: LoadingCall
+			useLoadingCallBack3: LoadingCallBack
+			useLoadingEffect3: LoadingEffect
+	  }
+	: N extends 4
+	? {
+			loading: boolean
+			useLoadingCall: LoadingCall
+			useLoadingCallBack: LoadingCallBack
+			useLoadingEffect: LoadingEffect
+			loading2: boolean
+			useLoadingCall2: LoadingCall
+			useLoadingCallBack2: LoadingCallBack
+			useLoadingEffect2: LoadingEffect
+			loading3: boolean
+			useLoadingCall3: LoadingCall
+			useLoadingCallBack3: LoadingCallBack
+			useLoadingEffect3: LoadingEffect
+			loading4: boolean
+			useLoadingCall4: LoadingCall
+			useLoadingCallBack4: LoadingCallBack
+			useLoadingEffect4: LoadingEffect
+	  }
+	: never

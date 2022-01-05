@@ -14,6 +14,8 @@ import { useEditorList } from './src/use-editor-list'
 import { useCheckInjectReturn } from './src/use-check-inject-return'
 import { useSafeCallback } from './src/use-safe-callback'
 import { useSafeImmer } from './src/use-safe-immer'
+import { useForceUpdate } from './src/use-force-update'
+import { useLoading } from './src/use-loading'
 
 export {
 	createI18n,
@@ -31,4 +33,6 @@ export {
 	useToggle,
 	useEditorList,
 	useCheckInjectReturn,
+	useForceUpdate,
+	useLoading,
 }
