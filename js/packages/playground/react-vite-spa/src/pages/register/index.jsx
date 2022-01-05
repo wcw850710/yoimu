@@ -9,10 +9,8 @@ export default () => {
 	const history = useHistory()
 	const { http } = useHttp()
 	const [submitLoading, setSubmitLoading] = useState(false)
-	const { setAuth, setToken } = useAuth(e => ({
-		setAuth: e.setAuth,
-		setToken: e.setToken,
-	}))
+	const setAuth = useAuth(e => e.setAuth)
+	const setToken = useAuth(e => e.setToken)
 
 	const password2Rules = useMemo(
 		() => [

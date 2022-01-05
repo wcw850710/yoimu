@@ -3,12 +3,10 @@ import { EAuthCode, useAuth } from '@/core/hooks/use-auth'
 import { useSafeState } from '@yoimu/react-common-lib'
 
 export const useValidateAuth = () => {
-	const { auth, token, setAuth, clearAuthState } = useAuth(e => ({
-		auth: e.auth,
-		token: e.token,
-		setAuth: e.setAuth,
-		clearAuthState: e.clearAuthState,
-	}))
+	const auth = useAuth(e => e.auth)
+	const token = useAuth(e => e.token)
+	const setAuth = useAuth(e => e.setAuth)
+	const clearAuthState = useAuth(e => e.clearAuthState)
 	// 基礎身分權限用
 	// const checkPermission = useAuth(e => e.checkPermission)
 	const [code, setCode] = useSafeState(
